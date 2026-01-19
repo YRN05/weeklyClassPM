@@ -12,8 +12,8 @@ st.divider()
 
 # Layout
 st.header("About Member")
-ch1, ch2 = st.columns(2)
-ch3, ch4 = st.columns(2)
+ch1, ch2 = st.columns(2, border=True)
+ch3, ch4 = st.columns(2, border=True)
 
 # University
 
@@ -50,7 +50,7 @@ with ch3:
     
     # Untuk Angkatan mungkin tidak perlu terlalu miring, tapi tetap diterapkan agar konsisten
     chart_angkatan = alt.Chart(df_angkatan).mark_bar().encode(
-        x=alt.X('Angkatan', axis=alt.Axis(labelAngle=-45)),
+        x=alt.X('Angkatan:O', axis=alt.Axis(labelAngle=-45)),
         y='Total'
     )
     st.altair_chart(chart_angkatan, use_container_width=True)
@@ -71,22 +71,28 @@ with ch4:
 
 st.divider()
 st.header("Weekly Class")
-st.subheader("Jalannya Materi")
-rating_field = df.columns[8]
-df_rating = df[rating_field].value_counts().reset_index()
-df_rating.columns = ["Rating", "Total"]
-st.bar_chart(df_rating, x='Rating', y='Total', horizontal=True)
 
-st.subheader("Benefit")
-benefit_field = df.columns[9]
-df_rating = df[benefit_field].value_counts().reset_index()
-df_rating.columns = ["Benefit", "Total"]
-st.bar_chart(df_rating, x='Benefit', y='Total', horizontal=True)
+materi, benefit, join = st.columns(3, border=True)
 
-st.subheader("Keinginan untuk join next weekly class")
-df_join = df['How likely are you to join the future weekly class based on this weekly class?'].value_counts().reset_index()
-df_join.columns = ['Join', 'Total']
-st.bar_chart(df_join, x='Join', y='Total', horizontal=True)
+with materi:
+    st.subheader("Jalannya Materi")
+    rating_field = df.columns[8]
+    df_rating = df[rating_field].value_counts().reset_index()
+    df_rating.columns = ["Rating", "Total"]
+    st.bar_chart(df_rating, x='Rating', y='Total', horizontal=True)
+
+with benefit:
+    st.subheader("Benefit")
+    benefit_field = df.columns[9]
+    df_rating = df[benefit_field].value_counts().reset_index()
+    df_rating.columns = ["Benefit", "Total"]
+    st.bar_chart(df_rating, x='Benefit', y='Total', horizontal=True)
+
+with join:
+    st.subheader("Keinginan untuk join next weekly class")
+    df_join = df['How likely are you to join the future weekly class based on this weekly class?'].value_counts().reset_index()
+    df_join.columns = ['Join', 'Total']
+    st.bar_chart(df_join, x='Join', y='Total', horizontal=True)
 
 # Ekspetasi
 st.subheader("Ekspetasi")
@@ -97,10 +103,10 @@ expectation = '''
 * **Pengen yang Praktikal (Sekitar 3-4 orang):** Ada beberapa yang pengen ilmunya bisa langsung dipraktekkin, kayak gimana sih cara nentuin fitur utama buat MVP atau mempelajari PM secara lebih praktis. Ini bisa jadi fokus ke depan biar materi nggak cuma teori.
 * **Kelas yang Seru & Insightful (Sekitar 3 orang):** Beberapa peserta juga berharap kelasnya dibawakan secara insightful, nggak monoton, dan bisa nyambungin topik dari kelas sebelumnya. Ini feedback bagus buat kita jaga kualitas penyampaian materi.
 
-### **Poin yang Bisa Kita Improve (Bukan Negatif, tapi Peluang):**
+### **Poin yang Bisa Kita Improve:**
 * **Penguatan Konsep Dasar (Muncul dari 1 responden):** Ada satu respon yang nunjukkin kalau masih ada miskonsepsi soal MVP (dia kira 'Most Valuable Person'). Ini jadi sinyal buat kita, di awal atau pas diskusi, mungkin perlu re-emphasize lagi definisi-definisi kunci biar semua peserta punya pemahaman dasar yang sama, apalagi kalau pesertanya dari berbagai latar belakang. Ini bukan masalah, tapi peluang biar nggak ada yang salah paham dari awal.
 
-**Overall**, vibes-nya positif banget sih! Peserta sangat eager buat belajar PM dan MVP lebih dalam. Kita tinggal fokus buat nyediain konten yang insightful, praktikal, dan memastikan konsep dasarnya nyampe ke semua orang.
+**Overall**, vibes-nya positif banget! Member sangat eager buat belajar PM dan MVP lebih dalam. Kita tinggal fokus buat nyediain konten yang insightful, praktikal, dan memastikan konsep dasarnya nyampe ke semua orang.
 '''
 st.markdown(expectation)
 
@@ -110,12 +116,13 @@ improve = '''
 **Poin-Poin Positif yang Bisa Kita Tingkatkan atau Tambahkan**:
 
 1. Interaktivitas Kelas:
-    * Gambaran: Cukup banyak lho (sekitar 3 responden) yang pengen kelasnya lebih interaktif lagi. Mereka saranin biar ada game atau kuis untuk mencairkan suasana dan bikin materi lebih mudah dicerna.
+    * Terdapat 3 responden yang ingin kelasnya lebih interaktif lagi. Mereka saranin biar ada game atau kuis untuk mencairkan suasana dan bikin materi lebih mudah dicerna.
     * Ada juga yang minta sesi Q&A-nya bisa diperpanjang atau slot pesertanya dibanyakin biar semua kebagian nanya. Ini bagus banget buat bikin suasana kelas makin hidup dan peserta makin engage!
 
 2. Eksplorasi Platform Presentasi:
     * Gambaran: Satu responden sempat nyaranin buat coba pakai platform presentasi berbasis web yang mungkin bisa memberikan pengalaman berbeda. Ini bisa jadi opsi menarik kalau kita mau explore hal baru ke depannya.
 
+    
 **Poin-Poin Negatif yang Perlu Kita Perbaiki atau Tingkatkan**:
 
 1. Informasi Jadwal Kelas:
@@ -144,8 +151,6 @@ value = '''
 3. **Pemateri & Pembawa Acara Top Banget! (2 responden)**
     * Ada juga yang muji pemateri dan pembawa acara kita **bagus dan keren dalam penyampaian**. Ini penting banget biar suasana kelas tetap asyik dan informatif.
 
----
-
 ### **Poin-Poin yang Bisa Kita Tingkatkan (Bukan Negatif, tapi Saran yang Berharga!):**
 
 1. **Pengembangan Materi yang Lebih Mendalam & Aplikatif (Total 6 responden)**
@@ -161,7 +166,7 @@ st.subheader("Question")
 question = '''
 ### **Ringkasan Feedback dari Member Weekly Class**
 
-**Poin-Poin Positif (yang bikin kita makin semangat!):**
+**Poin-Poin Positif:**
 * **Materi dan Kelas Secara Umum Sudah Bagus:** Ada member yang bilang "semua sudah bagus". Ini nunjukkin kalau secara keseluruhan, materi yang kita bawakan sudah on track dan cukup disukai. Keep up the good work!
 
 ### **Poin-Poin yang Perlu Di-improve/Ditinjau (biar Weekly Class makin kece badai!):**

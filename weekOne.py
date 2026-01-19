@@ -12,8 +12,8 @@ st.divider()
 
 # Layout
 st.header("About Member")
-ch1, ch2 = st.columns(2)
-ch3, ch4 = st.columns(2)
+ch1, ch2 = st.columns(2, border=True)
+ch3, ch4 = st.columns(2, border=True)
 
 # University
 
@@ -48,9 +48,10 @@ with ch3:
     df_angkatan = df['Please enter your year of entry (e.g., 2025).'].value_counts().reset_index()
     df_angkatan.columns = ["Angkatan", "Total"]
     
-    # Untuk Angkatan mungkin tidak perlu terlalu miring, tapi tetap diterapkan agar konsisten
+    # Tambahkan :O (Ordinal) atau :N (Nominal) setelah nama kolom 'Angkatan'
+    # Ini akan menghilangkan koma dan menganggap tahun sebagai teks/label
     chart_angkatan = alt.Chart(df_angkatan).mark_bar().encode(
-        x=alt.X('Angkatan', axis=alt.Axis(labelAngle=-45)),
+        x=alt.X('Angkatan:O', axis=alt.Axis(labelAngle=-45)), 
         y='Total'
     )
     st.altair_chart(chart_angkatan, use_container_width=True)
@@ -71,63 +72,71 @@ with ch4:
 
 st.divider()
 st.header("Weekly Class")
-st.subheader("Jalannya Materi")
-rating_field = df.columns[8]
-df_rating = df[rating_field].value_counts().reset_index()
-df_rating.columns = ["Rating", "Total"]
-st.bar_chart(df_rating, x='Rating', y='Total', horizontal=True)
 
-st.subheader("Benefit")
-benefit_field = df.columns[7]
-df_rating = df[benefit_field].value_counts().reset_index()
-df_rating.columns = ["Benefit", "Total"]
-st.bar_chart(df_rating, x='Benefit', y='Total', horizontal=True)
+materi, benefit, join = st.columns(3, border=True)
+with materi:
+    st.subheader("Jalannya Materi")
+    rating_field = df.columns[8]
+    df_rating = df[rating_field].value_counts().reset_index()
+    df_rating.columns = ["Rating", "Total"]
+    st.bar_chart(df_rating, x='Rating', y='Total', horizontal=True)
 
-st.subheader("Keinginan untuk join next weekly class")
-df_join = df['How likely are you to join the future weekly class based on this weekly class?'].value_counts().reset_index()
-df_join.columns = ['Join', 'Total']
-st.bar_chart(df_join, x='Join', y='Total', horizontal=True)
+with benefit:
+    st.subheader("Benefit")
+    benefit_field = df.columns[7]
+    df_rating = df[benefit_field].value_counts().reset_index()
+    df_rating.columns = ["Benefit", "Total"]
+    st.bar_chart(df_rating, x='Benefit', y='Total', horizontal=True)
+
+with join:
+    st.subheader("Keinginan untuk join next weekly class")
+    df_join = df['How likely are you to join the future weekly class based on this weekly class?'].value_counts().reset_index()
+    df_join.columns = ['Join', 'Total']
+    st.bar_chart(df_join, x='Join', y='Total', horizontal=True)
 
 # Ekspetasi
 st.subheader("Ekspetasi")
 expectation = '''
-Poin-Poin Positif (yang paling banyak disebut dan bisa terus kita jaga/tingkatkan):
+Ekspetasi dari responden meliputi 2 poin berikut
 1. **Dahaga Ilmu dan Insight Baru (Mayoritas Responden = Hampir Semua)**
-
 2. **Pengalaman Baru dan Kelas yang Seru (Cukup Banyak Responden = Sekitar 3 dari 8)**
     
-Tapi, ini bukan berarti kita nggak perlu improve ya! Justru, tingginya ekspektasi positif ini bisa kita jadikan acuan untuk:
+Dengan tinggi dan positifnya ekspetasi member, hal yang bisa kita jadikan acuan:
 1. **Kedalaman dan Relevansi Materi**: 
+
     Karena semua pengen ilmu yang bermanfaat dan insight baru, kita perlu pastikan materi ke depannya nggak cuma "kulitnya" aja. Usahakan materinya mendalam, aplikatif, dan relevan sama kebutuhan mereka di Product Management. Mungkin bisa diperbanyak studi kasus atau contoh konkret yang bisa langsung mereka terapkan.
 2. **Interaktivitas dan Cara Penyampaian**: 
+
     Mengingat ada yang berharap kelasnya seru dan fun, kita bisa eksplor lebih banyak cara penyampaian materi yang interaktif. Mungkin sesi Q&A yang lebih panjang, diskusi kelompok kecil, atau format lain yang bikin peserta lebih engage dan nggak cuma jadi pendengar pasif.
 3. **Kejelasan Output/Outcome**: 
+
     Ekspektasi untuk tahu "apa saja yang diperlukan dan dihasilkan" bisa jadi sinyal kalau mereka butuh gambaran yang jelas dari setiap topik. Pastikan setiap sesi punya tujuan belajar yang transparan dan hasil yang bisa langsung mereka terapkan di pekerjaan atau proyek mereka.
 
-Secara keseluruhan, teman-teman antusias banget dan berharap dapat ilmu serta pengalaman positif. 
-PR kita adalah menjaga dan bahkan melampaui ekspektasi positif ini di kelas-kelas berikutnya!
+Secara keseluruhan, para member memiliki antusias yang besar dan berharap dapat ilmu serta pengalaman positif. 
 '''
 st.markdown(expectation)
 
 # Improve
 st.subheader("Improvment")
 improve = '''
-Poin-Poin Positif & Yang Udah Bagus Banget:
-1. Banyak yang Puas dan Nggak Ada Komplain!
+**Poin-poin yang dinilai bagus dari respon member**
+1. **Banyak yang Puas dan Nggak Ada Komplain!**
+
     Gambaran Jumlah: Ini lumayan banyak nih, dari sampel yang terlihat, beberapa member cuma bilang "Tidak ada, sudah bagus", "Nothing", "none", atau "tidak ada" pas ditanya soal improvement. 
     Bahkan ada yang saking serunya sampai "eum bingung seru semua". Ini sinyal bagus, artinya banyak yang udah happy dengan format dan materi kelas kita!
-2. Kahoot Jadi Favorit!
+2. **Kahoot Jadi Favorit!**
+
     Gambaran Jumlah: Ada member yang request spesifik banget: "mau kahoot terus soalnya seruwww"! 
     Ini nunjukkin kalau elemen interaktif kayak Kahoot itu super engaging dan bikin suasana kelas jadi hidup banget. Mantap!
 
-Poin-Poin yang Perlu Di-improve/Jadi Catatan:
+**Poin-Poin yang Perlu Di-improve/Jadi Catatan**:
 1. Kapasitas Zoom Perlu Ditingkatkan!
 2. Keinginan untuk Konten Lebih Menarik/Bervariasi (meski belum detail):
    
 **Kesimpulan Sementara**: 
 Overall, Weekly Class kita udah diterima dengan baik dan banyak yang enjoy. 
-Yang paling urgent untuk kita tindak lanjuti sepertinya masalah kapasitas Zoom biar semua yang antusias bisa ikutan. 
-Selain itu, Kahoot terbukti jadi game changer buat engagement, jadi bisa banget nih dipertahankan atau diperbanyak. Untuk ide konten yang "lebih menarik", mungkin perlu kita brainstorm lagi dan bisa jadi bahan survei tambahan nanti!
+Yang paling urgent untuk di tindak lanjuti sepertinya masalah kapasitas Zoom biar semua yang antusias bisa ikutan. 
+Selain itu, Kahoot terbukti jadi game changer buat engagement, sehingga bisa dipertahankan kreativitas untuk membuat pertanyaan yang sifatnya menghibur juga!
 '''
 st.markdown(improve)
 
