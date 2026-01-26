@@ -3,7 +3,7 @@ import pandas as pd
 import altair as alt
 
 # Data Preparation
-df = pd.read_csv('weekSatuClean.csv')
+df = pd.read_csv('data\weekSatuClean.csv')
 
 st.title("Week One Data Overview")
 st.dataframe(df)
