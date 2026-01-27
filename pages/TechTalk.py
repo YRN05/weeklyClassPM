@@ -3,7 +3,7 @@ import pandas as pd
 import altair as alt
 
 # Data Preparation
-df = pd.read_csv('data\TechTalkClean.csv')
+df = pd.read_csv('data/TechTalkClean.csv')
 
 st.title("Week One Data Overview")
 st.dataframe(df)
@@ -76,7 +76,7 @@ st.header("Weekly Class")
 materi, benefit, join = st.columns(3, border=True)
 with materi:
     st.subheader("Jalannya Materi")
-    rating_field = df.columns[8]
+    rating_field = df.columns[9]
     df_rating = df[rating_field].value_counts().reset_index()
     df_rating.columns = ["Rating", "Total"]
     st.bar_chart(df_rating, x='Rating', y='Total', horizontal=True)
@@ -90,7 +90,7 @@ with benefit:
 
 with join:
     st.subheader("Keinginan untuk join next weekly class")
-    df_join = df['How likely are you to join the future weekly class based on this weekly class?'].value_counts().reset_index()
+    df_join = df['How likely are you to join the future Tech Talk based on this Tech Talk?'].value_counts().reset_index()
     df_join.columns = ['Join', 'Total']
     st.bar_chart(df_join, x='Join', y='Total', horizontal=True)
 
