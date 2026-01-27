@@ -97,82 +97,60 @@ with join:
 # Ekspetasi
 st.subheader("Ekspetasi")
 expectation = '''
-Ekspetasi dari responden meliputi 2 poin berikut
-1. **Dahaga Ilmu dan Insight Baru (Mayoritas Responden = Hampir Semua)**
-2. **Pengalaman Baru dan Kelas yang Seru (Cukup Banyak Responden = Sekitar 3 dari 8)**
-    
-Dengan tinggi dan positifnya ekspetasi member, hal yang bisa kita jadikan acuan:
-1. **Kedalaman dan Relevansi Materi**: 
-
-    Karena semua pengen ilmu yang bermanfaat dan insight baru, kita perlu pastikan materi ke depannya nggak cuma "kulitnya" aja. Usahakan materinya mendalam, aplikatif, dan relevan sama kebutuhan mereka di Product Management. Mungkin bisa diperbanyak studi kasus atau contoh konkret yang bisa langsung mereka terapkan.
-2. **Interaktivitas dan Cara Penyampaian**: 
-
-    Mengingat ada yang berharap kelasnya seru dan fun, kita bisa eksplor lebih banyak cara penyampaian materi yang interaktif. Mungkin sesi Q&A yang lebih panjang, diskusi kelompok kecil, atau format lain yang bikin peserta lebih engage dan nggak cuma jadi pendengar pasif.
-3. **Kejelasan Output/Outcome**: 
-
-    Ekspektasi untuk tahu "apa saja yang diperlukan dan dihasilkan" bisa jadi sinyal kalau mereka butuh gambaran yang jelas dari setiap topik. Pastikan setiap sesi punya tujuan belajar yang transparan dan hasil yang bisa langsung mereka terapkan di pekerjaan atau proyek mereka.
-
-Secara keseluruhan, para member memiliki antusias yang besar dan berharap dapat ilmu serta pengalaman positif. 
+1. Haus akan ilmu Product Management (12 Responden)
+2. Hal-hal yang bersifat praktikal (3 Responden)
+3. Insight dari narasumber (2 Responden)
+4. Pengalaman baru serta update teknologi (2 Responden)
+5. Acara yang seru (1 Responden)
 '''
 st.markdown(expectation)
 
 # Improve
 st.subheader("Improvment")
 improve = '''
-**Poin-poin yang dinilai bagus dari respon member**
-1. **Banyak yang Puas dan Nggak Ada Komplain!**
+**Already Good**
+1. Kualitas Konten
+2. Kepuasan Umum (banyak yang bilang 'tidak ada')
 
-    Gambaran Jumlah: Ini lumayan banyak nih, dari sampel yang terlihat, beberapa member cuma bilang "Tidak ada, sudah bagus", "Nothing", "none", atau "tidak ada" pas ditanya soal improvement. 
-    Bahkan ada yang saking serunya sampai "eum bingung seru semua". Ini sinyal bagus, artinya banyak yang udah happy dengan format dan materi kelas kita!
-2. **Kahoot Jadi Favorit!**
+**Need to Improve**
+1. Format acara (banyak yang ingin acaranya offline)
+2. Interaksi & Engagement (ada 4 responden yang meminta lebih interaktif, kuis dan ice breaking di sela sesi)
+3. Frekuensi Acara (banyak yang ingin lebih sering diadakan tech talk/antusias tinggi)
+4. Management Waktu (durasi acara lebih fleksible, waktu untuk QnA lebih lama)
+5. Variasi topik yang up to date
 
-    Gambaran Jumlah: Ada member yang request spesifik banget: "mau kahoot terus soalnya seruwww"! 
-    Ini nunjukkin kalau elemen interaktif kayak Kahoot itu super engaging dan bikin suasana kelas jadi hidup banget. Mantap!
-
-**Poin-Poin yang Perlu Di-improve/Jadi Catatan**:
-1. Kapasitas Zoom Perlu Ditingkatkan!
-2. Keinginan untuk Konten Lebih Menarik/Bervariasi (meski belum detail):
-   
-**Kesimpulan Sementara**: 
-Overall, Weekly Class kita udah diterima dengan baik dan banyak yang enjoy. 
-Yang paling urgent untuk di tindak lanjuti sepertinya masalah kapasitas Zoom biar semua yang antusias bisa ikutan. 
-Selain itu, Kahoot terbukti jadi game changer buat engagement, sehingga bisa dipertahankan kreativitas untuk membuat pertanyaan yang sifatnya menghibur juga!
+**Kesimpulan**
+Jadi, intinya, feedback paling menonjol itu soal keinginan offline dan banget-banget pengen acara yang lebih interaktif. Sementara itu, frekuensi acara, manajemen waktu, dan variasi topik juga jadi masukan berharga yang bisa kita pertimbangkan.
 '''
 st.markdown(improve)
 
 # Value
 st.subheader("Value")
 value = '''
-Terdapat beberapa benefit value yang dirasakan member selama berjalannya weekly class:
-1. Insight & Pengetahuan
-2. Kualitas Narasumber & Sharing Pengalaman
-3. Materi Relevan, Mudah Dipahami, dan Detail
-4. Materi Praktis, Studi Kasus & Problem Solving
-5. Peluang Diskusi & Q&A Interaktif
-6. Cocok untuk Pemula
-
-**Gambaran Umum**: 
-Secara keseluruhan, member sangat menghargai konten yang memberikan insight baru, disampaikan oleh narasumber yang menarik dengan sharing pengalaman relevan, 
-serta materi yang mudah dicerna dan aplikatif. Ini adalah formula sukses yang bisa kita pertahankan dan kembangkan untuk weekly class selanjutnya.
+1. Ilmu dan pengetahuan baru yang bermanfaat
+2. Insight dan pengalaman langsung dari praktisi/expert
+3. Materi yang spesifik dan up to date
+4. Kesempatan networking dan inspirasi
+5. Adanya interaksi, seperti sesi tanya jawab
 '''
 st.markdown(value)
 
 
 st.subheader("Question")
 question = '''
-**Poin-Poin yang Bisa Kita Tingkatkan (Saran/Kritik Konstruktif):**
-
-* **Materi Kurang Interaktif & Kurang Mendalam:** Beberapa member (10-15 orang) merasa materi bisa lebih seru lagi, kurang interaktif, atau pembahasannya kurang "deep".
-* **Butuh Lebih Banyak Studi Kasus:** Banyak request untuk contoh kasus nyata di lapangan agar lebih paham aplikasi teorinya.
-* **Durasi Kelas:** Ada sinyal bahwa durasi kelas terasa terlalu pendek untuk topik yang kompleks.
-
-**Potensi Topik Kelas Baru (Deeper Dive):**
-
-1. **User Research & User Testing:** Paling menonjol (5-7 pertanyaan). Peserta ingin tahu best practice melakukannya di perusahaan.
-2. **Pengelolaan Produk dari Awal:** (3-5 pertanyaan). Butuh guidance soal pembuatan PRD dan validasi ide.
-3. **Strategi & Karir PM:** (3-5 pertanyaan). Insight tentang karir di startup vs corporate.
-4. **Skill Teknis Tambahan:** Request materi tentang prototyping dan wireframing.
-
-**Kesimpulan untuk Next Plan:** Member mencari ilmu yang **praktis, mendalam, dan applicable**. Fokus selanjutnya adalah memperbanyak studi kasus nyata dan mempertimbangkan durasi yang lebih pas untuk topik berat.
+1. Skill & Pengembangan Karier PM (3 orang):
+    - Beberapa member penasaran banget soal skill apa aja sih yang wajib dipunya Product Manager?
+    - Mereka juga pengen tau gimana sih cara mulai dan ngembangin skill jadi PM?
+    - Ada juga yang nanya gimana PM itu bisa "membangun" sesuatu dari awal.
+    - Intinya: Mereka butuh panduan lebih lanjut soal perjalanan karier dan skill esensial seorang PM.
+2. Implementasi Praktis / Integrasi di Lapangan (2 orang):
+    - Dua orang member pengen banget tau gimana sih PM itu bisa melakukan integrasi secara praktis di dunia kerja nyata.
+    - Intinya: Member butuh contoh atau studi kasus konkret tentang aplikasi teori di lapangan.
+3. Dampak AI Terhadap Peran PM & IT (1 orang):
+    - Ada satu member yang kepikiran banget, "Apakah AI bakal ngegantiin peran PM sama IT?"
+    - Intinya: Ini topik hangat dan penting yang bisa jadi diskusi seru tentang masa depan profesi.
+4. Tantangan & Keseimbangan Kerja PM (1 orang):
+    - Satu member penasaran, "Gimana sih Product Manager itu nge-balance berbagai hal dalam pekerjaannya?"
+    - Intinya: Mereka pengen tau tips dan trik manajemen waktu atau prioritas untuk PM.
 '''
 st.markdown(question)
